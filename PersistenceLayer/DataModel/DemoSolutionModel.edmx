@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BlogdemoSQLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008"
+              Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="EmployerId" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="EmployerId" />
+          </Key>
+          <Property Name="EmployerId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalaryCalculation">
+          <Key>
+            <PropertyRef Name="SalaryCalculationId" />
+          </Key>
+          <Property Name="SalaryCalculationId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PeriodStartDate" Type="date" Nullable="false" />
+          <Property Name="PeriodEndDate" Type="date" Nullable="false" />
+          <Property Name="GrossAmount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NetAmount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Tax" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EmployeeId" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Taxcard">
+          <Key>
+            <PropertyRef Name="TaxcardId" />
+          </Key>
+          <Property Name="TaxcardId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaxPercentage" Type="numeric" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="EmployeeId" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Employee_ToEmployer">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="EmployerId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryCalculation_ToEmployee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="SalaryCalculation" Type="Self.SalaryCalculation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="SalaryCalculation">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaxcardToEmployee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Taxcard" Type="Self.Taxcard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Taxcard">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogdemoSQLModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryCalculation" EntityType="Self.SalaryCalculation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taxcard" EntityType="Self.Taxcard" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employee_ToEmployer" Association="Self.FK_Employee_ToEmployer">
+            <End Role="Employer" EntitySet="Employer" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryCalculation_ToEmployee" Association="Self.FK_SalaryCalculation_ToEmployee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="SalaryCalculation" EntitySet="SalaryCalculation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaxcardToEmployee" Association="Self.FK_TaxcardToEmployee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Taxcard" EntitySet="Taxcard" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BlogdemoSQLModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
+              xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employer" Relationship="Self.FK_Employee_ToEmployer" FromRole="Employee"
+                              ToRole="Employer" />
+          <NavigationProperty Name="SalaryCalculations" Relationship="BlogdemoSQLModel.FK_SalaryCalculation_ToEmployee"
+                              FromRole="Employee" ToRole="SalaryCalculation" />
+          <NavigationProperty Name="Taxcards" Relationship="BlogdemoSQLModel.FK_TaxcardToEmployee" FromRole="Employee"
+                              ToRole="Taxcard" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="EmployerId" />
+          </Key>
+          <Property Name="EmployerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_ToEmployer" FromRole="Employer"
+                              ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Employee_ToEmployer">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="EmployerId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogdemoSQLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Employers" EntityType="Self.Employer" />
+          <AssociationSet Name="FK_Employee_ToEmployer" Association="Self.FK_Employee_ToEmployer">
+            <End Role="Employer" EntitySet="Employers" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <EntitySet Name="SalaryCalculations" EntityType="BlogdemoSQLModel.SalaryCalculation" />
+          <EntitySet Name="Taxcards" EntityType="BlogdemoSQLModel.Taxcard" />
+          <AssociationSet Name="FK_SalaryCalculation_ToEmployee"
+                          Association="BlogdemoSQLModel.FK_SalaryCalculation_ToEmployee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="SalaryCalculation" EntitySet="SalaryCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaxcardToEmployee" Association="BlogdemoSQLModel.FK_TaxcardToEmployee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Taxcard" EntitySet="Taxcards" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SalaryCalculation">
+          <Key>
+            <PropertyRef Name="SalaryCalculationId" />
+          </Key>
+          <Property Name="SalaryCalculationId" Type="String" Nullable="false" MaxLength="50" FixedLength="false"
+                    Unicode="false" />
+          <Property Name="PeriodStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PeriodEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GrossAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NetAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Tax" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="BlogdemoSQLModel.FK_SalaryCalculation_ToEmployee"
+                              FromRole="SalaryCalculation" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Taxcard">
+          <Key>
+            <PropertyRef Name="TaxcardId" />
+          </Key>
+          <Property Name="TaxcardId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TaxPercentage" Type="Decimal" Nullable="false" Precision="18" Scale="1" />
+          <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="BlogdemoSQLModel.FK_TaxcardToEmployee" FromRole="Taxcard"
+                              ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_SalaryCalculation_ToEmployee">
+          <End Type="BlogdemoSQLModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="BlogdemoSQLModel.SalaryCalculation" Role="SalaryCalculation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="SalaryCalculation">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaxcardToEmployee">
+          <End Type="BlogdemoSQLModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="BlogdemoSQLModel.Taxcard" Role="Taxcard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Taxcard">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BlogdemoSQLModelStoreContainer"
+                                CdmEntityContainer="BlogdemoSQLEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BlogdemoSQLModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employers">
+            <EntityTypeMapping TypeName="BlogdemoSQLModel.Employer">
+              <MappingFragment StoreEntitySet="Employer">
+                <ScalarProperty Name="EmployerId" ColumnName="EmployerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryCalculations">
+            <EntityTypeMapping TypeName="BlogdemoSQLModel.SalaryCalculation">
+              <MappingFragment StoreEntitySet="SalaryCalculation">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+                <ScalarProperty Name="PeriodEndDate" ColumnName="PeriodEndDate" />
+                <ScalarProperty Name="PeriodStartDate" ColumnName="PeriodStartDate" />
+                <ScalarProperty Name="SalaryCalculationId" ColumnName="SalaryCalculationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxcards">
+            <EntityTypeMapping TypeName="BlogdemoSQLModel.Taxcard">
+              <MappingFragment StoreEntitySet="Taxcard">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="TaxcardId" ColumnName="TaxcardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

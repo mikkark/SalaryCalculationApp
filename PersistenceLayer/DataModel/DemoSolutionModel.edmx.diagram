@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c7c033e7d9c84c0ebc71bb9648ba1a78" Name="Diagram1">
+        <EntityTypeShape EntityType="BlogdemoSQLModel.Employee" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogdemoSQLModel.Employer" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="BlogdemoSQLModel.FK_Employee_ToEmployer" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BlogdemoSQLModel.SalaryCalculation" Width="1.5" PointX="5.25" PointY="7.25" />
+        <EntityTypeShape EntityType="BlogdemoSQLModel.Taxcard" Width="1.5" PointX="5.25" PointY="4.75" />
+        <AssociationConnector Association="BlogdemoSQLModel.FK_SalaryCalculation_ToEmployee" />
+        <AssociationConnector Association="BlogdemoSQLModel.FK_TaxcardToEmployee" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
