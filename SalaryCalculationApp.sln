@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting", "Reporting\Repo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalarycalculationCore", "SalarycalculationCore\SalarycalculationCore.csproj", "{CDDD81E0-65AB-4B95-9BD9-2EFB611A3303}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{F111A309-1CAB-47CE-BAE8-41C2450C9450}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalaryCalculationApp.Client", "Client\SalaryCalculationApp.Client.csproj", "{F111A309-1CAB-47CE-BAE8-41C2450C9450}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

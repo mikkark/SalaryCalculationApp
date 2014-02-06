@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace MVCSPATestRun.Controllers
+namespace SalaryCalculationApp.Client.Controllers
 {
     public class BasicDataController : Controller
     {
@@ -15,5 +11,5 @@ namespace MVCSPATestRun.Controllers
         {
             return View();
         }
-	}
+    }
 }

@@ -3,3 +3,18 @@
 }
 
 <h2>Here you can modify your own data as employer as well as the basic data related to your employees</h2>
+
+<div ng-app="basicData">
+
+    <div ng-controller="EmployerBasicDataController">
+        <p>Text from model: {{ data }}</p>
+        <p>Text from model: {{ employer.Name }}</p>
+    </div>
+
+</div>
+
+@section ScriptToRunAtTheEnd
+{
+    <script src=@Url.Content("~/Scripts/Vendor/angular.min.js")> </script>
+    <script src=@Url.Content("~/Scripts/Controllers/EmployerBasicData.js")> </script>
+}

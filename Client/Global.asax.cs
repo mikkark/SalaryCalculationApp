@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SalaryCalculationApp.Client.App_Start;
 
-namespace MVCSPATestRun
+namespace SalaryCalculationApp.Client
 {
     public class Global : HttpApplication
     {
@@ -11,6 +13,7 @@ namespace MVCSPATestRun
         {
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }

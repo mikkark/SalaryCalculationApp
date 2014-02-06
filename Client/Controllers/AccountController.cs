@@ -7,13 +7,13 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-namespace MVCSPATestRun.Controllers
+namespace SalaryCalculationApp.Client.Controllers
 {
     public class AccountController : Controller
     {
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-        
+
         // POST: /Account/ExternalLogin
         private IAuthenticationManager AuthenticationManager
         {
@@ -70,7 +70,8 @@ namespace MVCSPATestRun.Controllers
         public ActionResult Login(string returnUrl)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult("Google", Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
+            return new ChallengeResult("Google",
+                Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
         }
 
         private async Task SignInAsync(string userName, bool isPersistent)
@@ -119,5 +120,4 @@ namespace MVCSPATestRun.Controllers
             }
         }
     }
-
 }

@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using MVCSPATestRun;
 using Owin;
+using SalaryCalculationApp.Client.App_Start;
 
-[assembly: OwinStartupAttribute(typeof(Startup))]
-namespace MVCSPATestRun
+[assembly: OwinStartup(typeof (Startup))]
+
+namespace SalaryCalculationApp.Client.App_Start
 {
     public class Startup
     {
