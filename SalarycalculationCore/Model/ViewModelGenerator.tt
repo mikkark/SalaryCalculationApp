@@ -1,0 +1,47 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="html" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="Partials.tt" #>
+<#@ include file="CrudController.tt" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ assembly name="$(TargetPath)" #>
+
+<#
+//	To use this generator: download the T4 Toolbox from http://www.olegsych.com/ (extension in VS)
+//	and use the T4 Tangible Editor for code editing http://t4-editor.tangible-engineering.com/T4-Editor-Visual-T4-Editing.html (free version)
+#>
+
+
+<#
+	var list = new List<Type>();
+	
+	foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(mikkark.SCA.Core.Model.Employee)).GetTypes())
+    {
+		if (type.Namespace != "mikkark.SCA.Core.Model")
+		{
+			continue;
+		}
+
+	    if (type.IsAbstract) continue;	// only generate JS viewmodels for non-abstract classes
+
+		list.Add(type);
+    }
+
+	//Create partials
+	foreach (var type in list)
+    {
+		var vmtemplate = new PartialsTemplate(type, list);
+		vmtemplate.Output.Project = @"C:\Omat projektit\github\SalaryCalculationApp\Client\mikkark.SCA.Client.csproj";
+		vmtemplate.Output.File = @"Views\Partials\" + type.Name.ToLower() + ".html";
+		vmtemplate.Render();
+    }
+
+	//Create controllers
+	var controllerTemplate = new CrudControllerTemplate(list);
+	controllerTemplate.Output.Project = @"C:\Omat projektit\github\SalaryCalculationApp\Client\mikkark.SCA.Client.csproj";
+	controllerTemplate.Output.File = @"Scripts\Controllers\crudControllers.js";
+	controllerTemplate.Render();    
+
+#>

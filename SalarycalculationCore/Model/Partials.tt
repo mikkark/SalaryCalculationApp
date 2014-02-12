@@ -1,0 +1,38 @@
+﻿<#+
+public class PartialsTemplate : CSharpTemplate
+{
+	private Type _type;
+	private List<Type> _list;
+
+    public PartialsTemplate (Type type, List<Type> list)
+    {
+		_type = type;
+		_list = list;
+    }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+
+		
+#>
+
+<div>
+
+<#+ foreach(var prop in _type.GetProperties()) { 
+	  //	string is also an IEnumerable (of chars). Strings must not be implemented as ko.observableArray()
+	  if (prop.PropertyType != typeof(string)
+		  && prop.PropertyType != typeof(byte[])
+		  && prop.PropertyType.GetInterface("IEnumerable") != null) {#>
+<#+   } else { #>
+	<p><#= prop.Name #>: {{ <#= _type.Name.ToLower() #>.<#= prop.Name #> }} </p>
+<#+   }	// end if #>
+<#+ }	// end foreach #>
+
+</div>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SalaryCalculationApp.Client.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="mikkark.SCA.Client.Global" Language="C#" %>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infrastructure.PubSub
+namespace mikkark.SCA.Infra.PubSub
 {
     public interface IMessageBus
     {

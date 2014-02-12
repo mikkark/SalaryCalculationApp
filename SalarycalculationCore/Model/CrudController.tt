@@ -1,0 +1,36 @@
+﻿<#+
+
+public class CrudControllerTemplate : CSharpTemplate
+{
+	private List<Type> _list;
+
+    public CrudControllerTemplate (List<Type> list)
+    {
+		_list = list;
+    }
+
+	public override string TransformText()
+	{
+		base.TransformText();		
+#>
+
+var crudControllers = angular.module('crudDataControllers', []);
+
+<#+
+			foreach (var type in _list)
+    { #>
+
+	crudControllers.controller('<#= type.Name.ToLower() #>Controller', function ($scope, $http) {
+    $http.get('../api/<#= type.Name #>').success(function (data) {
+        $scope.data = data;
+    });
+}
+);
+
+	<#+ } #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

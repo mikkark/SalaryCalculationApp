@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Infrastructure.PubSub
+namespace mikkark.SCA.Infra.PubSub
 {
     public class DefaultMessageBus : IMessageBus
     {

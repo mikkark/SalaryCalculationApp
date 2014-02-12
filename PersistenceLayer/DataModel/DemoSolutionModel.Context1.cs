@@ -7,10 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Infrastructure;
-using SalarycalculationCore.Model;
+using mikkark.SCA.Core.Model;
 
-namespace PersistenceLayer.DataModel
+namespace mikkark.SCA.Persistence.DataModel
 {
     using System;
     using System.Data.Entity;

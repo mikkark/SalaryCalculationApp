@@ -7,8 +7,8 @@
     <ProjectGuid>{B4D715EB-FB37-4800-8E89-18B8FED83EC2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Infrastructure</RootNamespace>
-    <AssemblyName>Infrastructure</AssemblyName>
+    <RootNamespace>mikkark.SCA.Infra</RootNamespace>
+    <AssemblyName>mikkark.SCA.Infra</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

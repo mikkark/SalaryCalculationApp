@@ -1,6 +1,6 @@
-﻿using SalarycalculationCore.Model;
+﻿using mikkark.SCA.Core.Model;
 
-namespace SalarycalculationCore.Calculation
+namespace mikkark.SCA.Core.Calculation
 {
     public class SalaryCalculator
     {

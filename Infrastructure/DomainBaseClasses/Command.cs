@@ -1,6 +1,6 @@
-﻿using Infrastructure.PubSub;
+﻿using mikkark.SCA.Infra.PubSub;
 
-namespace Infrastructure.DomainBaseClasses
+namespace mikkark.SCA.Infra.DomainBaseClasses
 {
     public abstract class Command
     {

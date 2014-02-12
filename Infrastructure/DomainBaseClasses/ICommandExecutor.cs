@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.DomainBaseClasses
+﻿namespace mikkark.SCA.Infra.DomainBaseClasses
 {
     public interface ICommandExecutor
     {

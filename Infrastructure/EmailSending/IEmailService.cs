@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.EmailSending
+﻿namespace mikkark.SCA.Infra.EmailSending
 {
     public interface IEmailService
     {

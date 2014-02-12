@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Infrastructure.DomainBaseClasses;
-using PersistenceLayer.DataModel;
-using SalarycalculationCore.Model;
+using mikkark.SCA.Core.Model;
+using mikkark.SCA.Infra.DomainBaseClasses;
+using mikkark.SCA.Persistence.DataModel;
 
-namespace PersistenceLayer.Queries
+namespace mikkark.SCA.Persistence.Queries
 {
     public class GetSalaryCalculationsForAnEmployee : Query<IQueryable<SalaryCalculation>>
     {

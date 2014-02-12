@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SalarycalculationCore.Model
+namespace mikkark.SCA.Core.Model
 {
     using System;
     using System.Collections.Generic;

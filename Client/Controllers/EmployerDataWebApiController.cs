@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
-using SalarycalculationCore.Model;
+using mikkark.SCA.Core.Model;
 
-namespace SalaryCalculationApp.Client.Controllers
+namespace mikkark.SCA.Client.Controllers
 {
     public class EmployerDataWebApiController : ApiController
     {

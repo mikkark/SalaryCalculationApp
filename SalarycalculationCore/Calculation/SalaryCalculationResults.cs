@@ -1,4 +1,4 @@
-﻿namespace SalarycalculationCore.Calculation
+﻿namespace mikkark.SCA.Core.Calculation
 {
     public class SalaryCalculationResults
     {

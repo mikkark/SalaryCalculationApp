@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CDDD81E0-65AB-4B95-9BD9-2EFB611A3303}</ProjectGuid>
+    <ProjectGuid>{C606AB70-001F-4CEE-8906-BEF9D115EEAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SalarycalculationCore</RootNamespace>
-    <AssemblyName>SalarycalculationCore</AssemblyName>
+    <RootNamespace>mikkark.SCA.Reporting</RootNamespace>
+    <AssemblyName>mikkark.SCA.Reporting</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -36,50 +36,25 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculation\SalaryCalculationException.cs" />
-    <Compile Include="Calculation\SalaryCalculationResults.cs" />
-    <Compile Include="Calculation\SalaryCalculationValidation.cs" />
-    <Compile Include="Calculation\SalaryCalculator.cs" />
-    <Compile Include="Events\SalaryCalculationDoneEvent.cs" />
-    <Compile Include="Events\SalaryCalculationFailedEvent.cs" />
-    <Compile Include="Model\DemoSolutionModel1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DemoSolutionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Employee.cs">
-      <DependentUpon>DemoSolutionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Employer.cs">
-      <DependentUpon>DemoSolutionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SalaryCalculation.cs">
-      <DependentUpon>DemoSolutionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Taxcard.cs">
-      <DependentUpon>DemoSolutionModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="ReportingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+    <ProjectReference Include="..\Infrastructure\mikkark.SCA.Infra.csproj">
       <Project>{B4D715EB-FB37-4800-8E89-18B8FED83EC2}</Project>
-      <Name>Infrastructure</Name>
+      <Name>mikkark.SCA.Infra</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Model\DemoSolutionModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DemoSolutionModel1.cs</LastGenOutput>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\SalarycalculationCore\mikkark.SCA.Core.csproj">
+      <Project>{CDDD81E0-65AB-4B95-9BD9-2EFB611A3303}</Project>
+      <Name>mikkark.SCA.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

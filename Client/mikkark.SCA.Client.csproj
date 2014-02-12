@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SalaryCalculationApp.Client</RootNamespace>
-    <AssemblyName>SalaryCalculationApp.Client</AssemblyName>
+    <RootNamespace>mikkark.SCA.Client</RootNamespace>
+    <AssemblyName>mikkark.SCA.Client</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -122,13 +122,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\Controllers\crudControllers.js" />
     <Content Include="Scripts\Vendor\jquery-1.10.2.min.map" />
     <None Include="Scripts\_references.js" />
-    <Content Include="Scripts\Controllers\EmployerBasicData.js" />
     <Content Include="Scripts\Vendor\angular.min.js" />
     <None Include="Scripts\Vendor\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Vendor\jquery-1.10.2.js" />
     <Content Include="Scripts\Vendor\jquery-1.10.2.min.js" />
+    <Content Include="Views\Partials\employee.html" />
+    <Content Include="Views\Partials\employer.html" />
+    <Content Include="Views\Partials\salarycalculation.html" />
+    <Content Include="Views\Partials\taxcard.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -163,12 +167,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Services\" />
-    <Folder Include="Views\BasicData\Viewtemplates\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SalarycalculationCore\SalarycalculationCore.csproj">
+    <ProjectReference Include="..\SalarycalculationCore\mikkark.SCA.Core.csproj">
       <Project>{CDDD81E0-65AB-4B95-9BD9-2EFB611A3303}</Project>
-      <Name>SalarycalculationCore</Name>
+      <Name>mikkark.SCA.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

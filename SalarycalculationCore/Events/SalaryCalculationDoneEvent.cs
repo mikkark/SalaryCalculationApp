@@ -1,6 +1,6 @@
-﻿using Infrastructure.PubSub;
+﻿using mikkark.SCA.Infra.PubSub;
 
-namespace SalarycalculationCore.Events
+namespace mikkark.SCA.Core.Events
 {
     public class SalaryCalculationDoneEvent : Event
     {

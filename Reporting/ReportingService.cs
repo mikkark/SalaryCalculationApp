@@ -1,7 +1,7 @@
-﻿using Infrastructure.PubSub;
-using SalarycalculationCore.Events;
+﻿using mikkark.SCA.Core.Events;
+using mikkark.SCA.Infra.PubSub;
 
-namespace Reporting
+namespace mikkark.SCA.Reporting
 {
     public class ReportingService
     {

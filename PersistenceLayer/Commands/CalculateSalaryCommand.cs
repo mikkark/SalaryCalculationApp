@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-using Infrastructure.DomainBaseClasses;
-using PersistenceLayer.DataModel;
-using PersistenceLayer.Queries;
-using SalarycalculationCore.Calculation;
-using SalarycalculationCore.Events;
-using SalarycalculationCore.Model;
+using mikkark.SCA.Core.Calculation;
+using mikkark.SCA.Core.Events;
+using mikkark.SCA.Core.Model;
+using mikkark.SCA.Infra.DomainBaseClasses;
+using mikkark.SCA.Persistence.DataModel;
+using mikkark.SCA.Persistence.Queries;
 
-namespace PersistenceLayer.Commands
+namespace mikkark.SCA.Persistence.Commands
 {
     /// <summary>
     ///     This is an example of a state changing command that calls business logic in the core assembly.

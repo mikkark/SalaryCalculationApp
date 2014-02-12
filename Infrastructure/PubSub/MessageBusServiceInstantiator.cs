@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.PubSub
+﻿namespace mikkark.SCA.Infra.PubSub
 {
     public static class MessageBusServiceInstantiator
     {
