@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-namespace SalaryCalculationApp.Client.Controllers
+namespace mikkark.SCA.Client.Controllers
 {
     public class AccountController : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
 
-namespace SalaryCalculationApp.Client.App_Start
+namespace mikkark.SCA.Client.App_Start
 {
     public static class WebApiConfig
     {

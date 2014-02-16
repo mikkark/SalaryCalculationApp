@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using mikkark.SCA.Client.App_Start;
 using Owin;
-using SalaryCalculationApp.Client.App_Start;
 
 [assembly: OwinStartup(typeof (Startup))]
 
-namespace SalaryCalculationApp.Client.App_Start
+namespace mikkark.SCA.Client.App_Start
 {
     public class Startup
     {

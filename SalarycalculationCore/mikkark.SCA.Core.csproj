@@ -80,16 +80,16 @@
     <None Include="Model\Partials.tt">
       <LastGenOutput>Partials.cs</LastGenOutput>
     </None>
-    <None Include="Model\ViewModelGenerator.tt">
+    <None Include="Model\AngularGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ViewModelGenerator1.html</LastGenOutput>
+      <LastGenOutput>AngularGenerator.html</LastGenOutput>
       <LastOutputs>
 ..\..\Client\Scripts\Controllers\crudControllers.js
 ..\..\Client\Views\Partials\employee.html
 ..\..\Client\Views\Partials\employer.html
 ..\..\Client\Views\Partials\salarycalculation.html
 ..\..\Client\Views\Partials\taxcard.html
-.\ViewModelGenerator1.html
+.\AngularGenerator.html
 </LastOutputs>
     </None>
     <None Include="packages.config" />
@@ -98,10 +98,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\ViewModelGenerator1.html">
+    <Content Include="Model\AngularGenerator.html">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ViewModelGenerator.tt</DependentUpon>
+      <DependentUpon>AngularGenerator.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

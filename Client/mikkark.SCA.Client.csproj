@@ -123,7 +123,10 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\Controllers\crudControllers.js" />
+    <Content Include="Scripts\Vendor\angular-route.min.js" />
+    <Content Include="Scripts\Vendor\angular-ui-router.min.js" />
     <Content Include="Scripts\Vendor\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\Vendor\angular-route.min.js.map" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\Vendor\angular.min.js" />
     <None Include="Scripts\Vendor\jquery-1.10.2.intellisense.js" />
@@ -131,6 +134,7 @@
     <Content Include="Scripts\Vendor\jquery-1.10.2.min.js" />
     <Content Include="Views\Partials\employee.html" />
     <Content Include="Views\Partials\employer.html" />
+    <Content Include="Views\Partials\full.html" />
     <Content Include="Views\Partials\salarycalculation.html" />
     <Content Include="Views\Partials\taxcard.html" />
     <Content Include="Web.config" />
@@ -141,7 +145,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BasicDataController.cs" />
-    <Compile Include="Controllers\EmployerDataWebApiController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

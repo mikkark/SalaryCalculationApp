@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace SalaryCalculationApp.Client.Controllers
+namespace mikkark.SCA.Client.Controllers
 {
     public class HomeController : Controller
     {

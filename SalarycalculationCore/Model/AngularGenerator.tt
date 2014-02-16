@@ -26,7 +26,7 @@
 
 	    if (type.IsAbstract) continue;	// only generate JS viewmodels for non-abstract classes
 
-		list.Add(type);
+		//list.Add(type);
     }
 
 	//Create partials

@@ -3,9 +3,9 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using SalaryCalculationApp.Client.App_Start;
+using mikkark.SCA.Client.App_Start;
 
-namespace SalaryCalculationApp.Client
+namespace mikkark.SCA.Client
 {
     public class Global : HttpApplication
     {

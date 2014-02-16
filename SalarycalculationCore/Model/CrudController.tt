@@ -14,7 +14,7 @@ public class CrudControllerTemplate : CSharpTemplate
 		base.TransformText();		
 #>
 
-var crudControllers = angular.module('crudDataControllers', []);
+var crudControllers = angular.module('crudControllers', []);
 
 <#+
 			foreach (var type in _list)
@@ -22,14 +22,12 @@ var crudControllers = angular.module('crudDataControllers', []);
 
 	crudControllers.controller('<#= type.Name.ToLower() #>Controller', function ($scope, $http) {
     $http.get('../api/<#= type.Name #>').success(function (data) {
-        $scope.data = data;
+        $scope.<#= type.Name.ToLower() #> = data;
     });
 }
 );
 
-	<#+ } #>
-
-<#+
+	<#+ }
         return this.GenerationEnvironment.ToString();
 	}
 }

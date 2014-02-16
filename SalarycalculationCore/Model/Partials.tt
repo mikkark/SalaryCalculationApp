@@ -20,10 +20,38 @@ public class PartialsTemplate : CSharpTemplate
 <div>
 
 <#+ foreach(var prop in _type.GetProperties()) { 
-	  //	string is also an IEnumerable (of chars). Strings must not be implemented as ko.observableArray()
 	  if (prop.PropertyType != typeof(string)
 		  && prop.PropertyType != typeof(byte[])
 		  && prop.PropertyType.GetInterface("IEnumerable") != null) {#>
+		<ul>
+            <li ng-repeat="childdata in <#= _type.Name.ToLower() #>.<#= prop.Name #>">
+				<p>
+
+			<#+
+				var collectionType = prop.PropertyType.GetGenericArguments()[0];
+
+			  for(int i = 0; i < collectionType.GetProperties().Length ; i++) {
+					var prop2 = collectionType.GetProperties()[i];
+					if (prop2.PropertyType == typeof(string) ||
+						prop2.PropertyType.GetInterface("IEnumerable") == null) {
+
+						if (i == 0)
+						{
+						#>
+						<a href="#/<#= prop.Name #>/{{ childdata.<#= prop2.Name #> }}"><#= prop2.Name #>: {{ childdata.<#= prop2.Name #> }}</a>
+						<#+
+						}
+						else 
+						{
+						#>
+						<#= prop2.Name #>: {{ childdata.<#= prop2.Name #> }} <#+
+						}
+				 } 
+			  } #>
+			   
+				</p>
+            </li>
+        </ul>
 <#+   } else { #>
 	<p><#= prop.Name #>: {{ <#= _type.Name.ToLower() #>.<#= prop.Name #> }} </p>
 <#+   }	// end if #>
