@@ -6,8 +6,8 @@
 
 var crudControllers = angular.module('crudControllers', []);
 
-crudControllers.controller('fullViewController', function ($scope, $route, $location) {
-    $scope.$on('$routeChangeSuccess', function () {
+crudControllers.controller('fullViewController', function($scope, $route, $location) {
+    $scope.$on('$routeChangeSuccess', function() {
         var path = $location.path();
         console.log(path);
         $scope.showEmployer = false;
@@ -23,35 +23,42 @@ crudControllers.controller('fullViewController', function ($scope, $route, $loca
     });
 });
 
-	crudControllers.controller('employeeController', function ($scope, $http, $stateParams) {
-	    $http.get('../api/Employee/' + $stateParams.id).success(function (data) {
+crudControllers.controller('employeeController', function($scope, $http, $stateParams) {
+
+    $http.get('../api/Employee/' + $stateParams.id).success(function (data) {
         $scope.employee = data;
     });
 }
 );
 
-	
-	crudControllers.controller('employerController', function ($scope, $http) {
-    $http.get('../api/Employer').success(function (data) {
+// ReSharper disable once InconsistentNaming
+crudControllers.controller('employerController', function($scope, $http, DataStore) {
+
+    if (DataStore.employer !== undefined) {
+        $scope.employer = DataStore.employer;
+        return;
+    }
+
+    $http.get('../api/Employer').success(function(data) {
         $scope.employer = data;
+
+        DataStore.employer = data;
     });
 }
 );
 
-	
-	crudControllers.controller('salarycalculationController', function ($scope, $http) {
-    $http.get('../api/SalaryCalculation').success(function (data) {
+
+crudControllers.controller('salarycalculationController', function($scope, $http) {
+    $http.get('../api/SalaryCalculation').success(function(data) {
         $scope.salarycalculation = data;
     });
 }
 );
 
-	
-	crudControllers.controller('taxcardController', function ($scope, $http) {
-    $http.get('../api/Taxcard').success(function (data) {
+
+crudControllers.controller('taxcardController', function($scope, $http, $stateParams) {
+    $http.get('../api/Taxcard/' + $stateParams.id).success(function(data) {
         $scope.taxcard = data;
     });
 }
 );
-
-	

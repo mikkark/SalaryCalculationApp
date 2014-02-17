@@ -3,6 +3,10 @@
     'crudControllers'
 ]);
 
+salarycalculationApp.factory("DataStore", function () {
+    return {};
+});
+
 salarycalculationApp.config(
     function($stateProvider) {
         $stateProvider
@@ -18,6 +22,14 @@ salarycalculationApp.config(
                 views: {
                     "employerView": { templateUrl: '../Views/Partials/employer.html' },
                     "employeeView": { templateUrl: '../Views/Partials/employee.html' }
+                }
+            })
+            .state('taxCard', {
+                url: "/Taxcards/:id",
+                views: {
+                    "employerView": { templateUrl: '../Views/Partials/employer.html' },
+                    "employeeView": { templateUrl: '../Views/Partials/employee.html' },
+                    "taxcardView": { templateUrl: '../Views/Partials/taxcard.html' }
                 }
             });
     }
