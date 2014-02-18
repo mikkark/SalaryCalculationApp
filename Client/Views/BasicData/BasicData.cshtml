@@ -6,16 +6,14 @@
 
 <div ng-app="salarycalculationApp">
 
-    <div ui-view="employerView" class="col-xs-4"></div>
-    <div ui-view="employeeView" class="col-xs-4"></div>
-    <div ui-view="taxcardView" class="col-xs-4"></div>
+    <div ng-view></div>
 
 </div>
 
 @section ScriptToRunAtTheEnd
 {
     <script src=@Url.Content("~/Scripts/Vendor/angular.min.js")> </script>
-    <script src=@Url.Content("~/Scripts/Vendor/angular-ui-router.min.js")> </script>
+    <script src=@Url.Content("~/Scripts/Vendor/angular-route.min.js")> </script>
     <script src=@Url.Content("~/Scripts/app.js")> </script>
     <script src=@Url.Content("~/Scripts/Controllers/crudControllers.js")> </script>
 }

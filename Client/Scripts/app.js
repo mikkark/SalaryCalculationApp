@@ -1,36 +1,25 @@
 ﻿var salarycalculationApp = angular.module('salarycalculationApp', [
-    'ui.router',
+    'ngRoute',
     'crudControllers'
 ]);
 
-salarycalculationApp.factory("DataStore", function () {
+salarycalculationApp.factory("DataStore", function() {
     return {};
 });
 
-salarycalculationApp.config(
-    function($stateProvider) {
-        $stateProvider
-            .state('/basicdata', {
-                url: "",
-                views: {
-                    "employerView": { templateUrl: '../Views/Partials/employer.html' },
-                    "employeeView": { template: '<p>You will see the employee data in this section.</p>' }
-                }
-            })
-            .state('employeeData', {
-                url: "/Employees/:id",
-                views: {
-                    "employerView": { templateUrl: '../Views/Partials/employer.html' },
-                    "employeeView": { templateUrl: '../Views/Partials/employee.html' }
-                }
-            })
-            .state('taxCard', {
-                url: "/Taxcards/:id",
-                views: {
-                    "employerView": { templateUrl: '../Views/Partials/employer.html' },
-                    "employeeView": { templateUrl: '../Views/Partials/employee.html' },
-                    "taxcardView": { templateUrl: '../Views/Partials/taxcard.html' }
-                }
+salarycalculationApp.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.
+            when('/basicdata', {
+                templateUrl: '../Views/Partials/employer.html'
+            }).
+            when('/Employees/:id', {
+                templateUrl: '../Views/Partials/employee.html'
+            }).            
+            when('/Taxcards/:id', {
+                templateUrl: '../Views/Partials/taxcard.html'
+            }).
+            otherwise({
+                redirectTo: '/basicdata'
             });
-    }
-);
+    }]);

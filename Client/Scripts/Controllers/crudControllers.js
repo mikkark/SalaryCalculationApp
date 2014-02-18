@@ -17,32 +17,36 @@ crudControllers.controller('fullViewController', function($scope, $route, $locat
         } else if (path.lastIndexOf('/Employees', 0) === 0) {
             $scope.showEmployer = true;
             $scope.showEmployee = true;
+        } else if (path.lastIndexOf('/Taxcards', 0) === 0) {
+            $scope.showEmployer = true;
+            $scope.showEmployee = true;
+            $scope.showTaxcard = true;
         } else {
             $scope.showEmployer = true;
         }
     });
 });
 
-crudControllers.controller('employeeController', function($scope, $http, $stateParams) {
+crudControllers.controller('employeeController', function($scope, $http, $routeParams) {
 
-    $http.get('../api/Employee/' + $stateParams.id).success(function (data) {
+    $http.get('../api/Employee/' + $routeParams.id).success(function (data) {
         $scope.employee = data;
     });
 }
 );
 
 // ReSharper disable once InconsistentNaming
-crudControllers.controller('employerController', function($scope, $http, DataStore) {
+crudControllers.controller('employerController', function($scope, $http) {
 
-    if (DataStore.employer !== undefined) {
-        $scope.employer = DataStore.employer;
-        return;
-    }
+    //if ($state.current.data.employer !== undefined) {
+    //    $scope.employer = $state.current.data.employer;
+    //    return;
+    //}
 
     $http.get('../api/Employer').success(function(data) {
         $scope.employer = data;
 
-        DataStore.employer = data;
+//        DataStore.employer = data;
     });
 }
 );
@@ -56,8 +60,8 @@ crudControllers.controller('salarycalculationController', function($scope, $http
 );
 
 
-crudControllers.controller('taxcardController', function($scope, $http, $stateParams) {
-    $http.get('../api/Taxcard/' + $stateParams.id).success(function(data) {
+crudControllers.controller('taxcardController', function ($scope, $http, $routeParams) {
+    $http.get('../api/Taxcard/' + $routeParams.id).success(function (data) {
         $scope.taxcard = data;
     });
 }
