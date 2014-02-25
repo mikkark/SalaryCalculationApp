@@ -6,7 +6,6 @@
         <title>@ViewBag.Title - My ASP.NET Application</title>
         <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
-        @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,7 +16,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("Application name", "Home", "Home", null, new {@class = "navbar-brand"})
+                    @Html.ActionLink("Back to main", "Home", "Home", null, new {@class = "navbar-brand"})
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav"></ul>
@@ -31,6 +30,7 @@
                                 else
                                 {
                                     @Html.ActionLink("Login with Google", "ExternalLogin", "Account", new {extreturnUrl = Url.Action("Home", "Home")}, new {@class = "navbar-right"})
+                                    @Html.ActionLink("Login on a demo account", "ExternalLoginDemo", "Account", new {extreturnUrl = Url.Action("Home", "Home")}, new {@class = "navbar-right"})
                                 }
                             </li>
                         </ul>
@@ -38,8 +38,9 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="container body-content">
+            
             @RenderBody()
             <hr />
             <footer class="col-xs-12">
@@ -49,6 +50,7 @@
 
         <script src="~/Scripts/Vendor/jquery-1.10.2.min.js"> </script>
         <script src="~/Content/bootstrap.min.js"> </script>
+        
         @RenderSection("ScriptToRunAtTheEnd", required: false)
     </body>
 </html>

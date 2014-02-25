@@ -11,6 +11,8 @@
 <#
 //	To use this generator: download the T4 Toolbox from http://www.olegsych.com/ (extension in VS)
 //	and use the T4 Tangible Editor for code editing http://t4-editor.tangible-engineering.com/T4-Editor-Visual-T4-Editing.html (free version)
+
+//  Note: to re-enable generation, set the custom tool back to TextTemplatingFileGenerator in the properties of this file.
 #>
 
 
@@ -18,25 +20,25 @@
 	var list = new List<Type>();
 	
 	foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(mikkark.SCA.Core.Model.Employee)).GetTypes())
-    {
+	{
 		if (type.Namespace != "mikkark.SCA.Core.Model")
 		{
 			continue;
 		}
 
-	    if (type.IsAbstract) continue;	// only generate JS viewmodels for non-abstract classes
+		if (type.IsAbstract) continue;	// only generate for non-abstract classes
 
-		//list.Add(type);
-    }
+		list.Add(type);
+	}
 
 	//Create partials
 	foreach (var type in list)
-    {
+	{
 		var vmtemplate = new PartialsTemplate(type, list);
 		vmtemplate.Output.Project = @"C:\Omat projektit\github\SalaryCalculationApp\Client\mikkark.SCA.Client.csproj";
 		vmtemplate.Output.File = @"Views\Partials\" + type.Name.ToLower() + ".html";
 		vmtemplate.Render();
-    }
+	}
 
 	//Create controllers
 	var controllerTemplate = new CrudControllerTemplate(list);

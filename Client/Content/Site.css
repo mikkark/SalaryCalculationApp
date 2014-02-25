@@ -14,24 +14,66 @@
 
 input,
 select,
-textarea { max-width: 280px; }
+textarea {
+    max-width: 280px;
+}
 
 /* styles for validation helpers */
 
-.field-validation-error { color: #b94a48; }
+.field-validation-error {
+    color: #b94a48;
+}
 
-.field-validation-valid { display: none; }
-
-input.input-validation-error { border: 1px solid #b94a48; }
-
-input[type="checkbox"].input-validation-error { border: 0 none; }
-
-.validation-summary-errors { color: #b94a48; }
-
-.validation-summary-valid { display: none; }
-
-@media (max-width: 600px) {
-  .facet_sidebar {
+.field-validation-valid {
     display: none;
-  }
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+div.active {
+    background-color: #e7c9d3
+}
+
+div[ng-app] div.nonactive {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    .returnLink {
+        display: none;
+    }
+}
+
+@media (max-width: 599px) {
+    div[ng-app] div.active:not(.lastActive) {
+        display: none;
+    }
+}
+
+/* -----------------*/
+/* CSS Transitions */
+/* -----------------*/
+
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-12 {
+    -moz-transition: width 1s;
+    -o-transition: width 1s;
+    -webkit-transition: width 1s;
+    transition: width 1s;
 }

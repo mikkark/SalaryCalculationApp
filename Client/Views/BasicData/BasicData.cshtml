@@ -4,16 +4,20 @@
 
 <h2>Here you can modify your own data as employer as well as the basic data related to your employees</h2>
 
-<div ng-app="salarycalculationApp">
+<div ng-app="salarycalculationApp" ng-controller="fullViewController">
 
-    <div ng-view></div>
+    <div class="col-md-11 active" ng-include="'../Views/Partials/employer.html'"></div>
+    <div class="col-md-1" ng-class="employee != undefined ? 'active' : 'nonactive'" ng-include="'../Views/Partials/employee.html'"></div>
+    <div class="col-md-1" ng-class="taxcard != undefined ? 'active' : 'nonactive'" ng-include="'../Views/Partials/taxcard.html'"></div>
 
 </div>
 
 @section ScriptToRunAtTheEnd
 {
     <script src=@Url.Content("~/Scripts/Vendor/angular.min.js")> </script>
-    <script src=@Url.Content("~/Scripts/Vendor/angular-route.min.js")> </script>
     <script src=@Url.Content("~/Scripts/app.js")> </script>
     <script src=@Url.Content("~/Scripts/Controllers/crudControllers.js")> </script>
+    <script src=@Url.Content("~/Scripts/Vendor/jquery.livequery.min.js")> </script>
+    <script src=@Url.Content("~/Scripts/Vendor/angular-route.min.js")> </script>
+    <script src=@Url.Content("~/Scripts/ui.js")> </script>
 }

@@ -4,10 +4,10 @@ public class CrudControllerTemplate : CSharpTemplate
 {
 	private List<Type> _list;
 
-    public CrudControllerTemplate (List<Type> list)
-    {
+	public CrudControllerTemplate (List<Type> list)
+	{
 		_list = list;
-    }
+	}
 
 	public override string TransformText()
 	{
@@ -18,17 +18,17 @@ var crudControllers = angular.module('crudControllers', []);
 
 <#+
 			foreach (var type in _list)
-    { #>
+	{ #>
 
 	crudControllers.controller('<#= type.Name.ToLower() #>Controller', function ($scope, $http) {
-    $http.get('../api/<#= type.Name #>').success(function (data) {
-        $scope.<#= type.Name.ToLower() #> = data;
-    });
+	$http.get('../api/<#= type.Name #>').success(function (data) {
+		$scope.<#= type.Name.ToLower() #> = data;
+	});
 }
 );
 
 	<#+ }
-        return this.GenerationEnvironment.ToString();
+		return this.GenerationEnvironment.ToString();
 	}
 }
 #>

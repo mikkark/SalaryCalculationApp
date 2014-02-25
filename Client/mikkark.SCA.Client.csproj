@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -121,6 +122,7 @@
     <Content Include="Content\bootstrap.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\ui.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\Controllers\crudControllers.js" />
     <Content Include="Scripts\Vendor\angular-route.min.js" />
@@ -132,9 +134,9 @@
     <None Include="Scripts\Vendor\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Vendor\jquery-1.10.2.js" />
     <Content Include="Scripts\Vendor\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\Vendor\jquery.livequery.min.js" />
     <Content Include="Views\Partials\employee.html" />
     <Content Include="Views\Partials\employer.html" />
-    <Content Include="Views\Partials\full.html" />
     <Content Include="Views\Partials\salarycalculation.html" />
     <Content Include="Views\Partials\taxcard.html" />
     <Content Include="Web.config" />

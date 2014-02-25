@@ -1,4 +1,6 @@
-﻿<div ng-controller="employeeController">
+﻿<div ng-class="{ employee != undefined ? active : nonactive }">
+
+    <a href class="returnLink" ng-click="getEmployer()">Back to employer</a>
 
     <p>EmployeeId: {{ employee.EmployeeId }} </p>
     <p>Name: {{ employee.Name }} </p>
@@ -10,7 +12,7 @@
         <li ng-repeat="childdata in employee.SalaryCalculations">
             <p>
 
-                <a href="#/SalaryCalculations/{{ childdata.SalaryCalculationId }}">SalaryCalculationId: {{ childdata.SalaryCalculationId }}</a>
+                <a href ng-click="getSalaryCalculation( childdata.SalaryCalculationId )">SalaryCalculationId: {{ childdata.SalaryCalculationId }}</a>
                 PeriodStartDate: {{ childdata.PeriodStartDate }} 						PeriodEndDate: {{ childdata.PeriodEndDate }} 						GrossAmount: {{ childdata.GrossAmount }} 						NetAmount: {{ childdata.NetAmount }} 						Tax: {{ childdata.Tax }} 						EmployeeId: {{ childdata.EmployeeId }} 						Employee: {{ childdata.Employee }}
             </p>
         </li>
@@ -19,7 +21,7 @@
         <li ng-repeat="childdata in employee.Taxcards">
             <p>
 
-                <a href="#/Taxcards/{{ childdata.TaxcardId }}">TaxcardId: {{ childdata.TaxcardId }}</a>
+                <a href ng-click="getTaxcard( childdata.TaxcardId )">TaxcardId: {{ childdata.TaxcardId }}</a>
                 TaxPercentage: {{ childdata.TaxPercentage }} 						EmployeeId: {{ childdata.EmployeeId }} 						Employee: {{ childdata.Employee }}
             </p>
         </li>

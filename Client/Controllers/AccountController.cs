@@ -51,7 +51,7 @@ namespace mikkark.SCA.Client.Controllers
                 return RedirectToAction("Home", "Home");
             }
 
-            await SignInAsync(loginInfo.DefaultUserName, false);
+            SignInAsync(loginInfo.DefaultUserName, false);
             return RedirectToLocal(returnUrl);
         }
 
@@ -74,7 +74,7 @@ namespace mikkark.SCA.Client.Controllers
                 Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
         }
 
-        private async Task SignInAsync(string userName, bool isPersistent)
+        private void SignInAsync(string userName, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
@@ -118,6 +118,12 @@ namespace mikkark.SCA.Client.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+        }
+
+        public ActionResult ExternalLoginDemo(string extreturnurl)
+        {
+            SignInAsync("Demouser", false);
+            return RedirectToLocal(extreturnurl);
         }
     }
 }

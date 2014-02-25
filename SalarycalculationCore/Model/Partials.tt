@@ -4,11 +4,11 @@ public class PartialsTemplate : CSharpTemplate
 	private Type _type;
 	private List<Type> _list;
 
-    public PartialsTemplate (Type type, List<Type> list)
-    {
+	public PartialsTemplate (Type type, List<Type> list)
+	{
 		_type = type;
 		_list = list;
-    }
+	}
 
 	public override string TransformText()
 	{
@@ -24,34 +24,34 @@ public class PartialsTemplate : CSharpTemplate
 		  && prop.PropertyType != typeof(byte[])
 		  && prop.PropertyType.GetInterface("IEnumerable") != null) {#>
 		<ul>
-            <li ng-repeat="childdata in <#= _type.Name.ToLower() #>.<#= prop.Name #>">
+			<li ng-repeat="childdata in <#= _type.Name.ToLower() #>.<#= prop.Name #>">
 				<p>
 
 			<#+
 				var collectionType = prop.PropertyType.GetGenericArguments()[0];
 
 			  for(int i = 0; i < collectionType.GetProperties().Length ; i++) {
-					var prop2 = collectionType.GetProperties()[i];
-					if (prop2.PropertyType == typeof(string) ||
-						prop2.PropertyType.GetInterface("IEnumerable") == null) {
+					var childProperty = collectionType.GetProperties()[i];
+					if (childProperty.PropertyType == typeof(string) ||
+						childProperty.PropertyType.GetInterface("IEnumerable") == null) {
 
 						if (i == 0)
 						{
 						#>
-						<a href="#/<#= prop.Name #>/{{ childdata.<#= prop2.Name #> }}"><#= prop2.Name #>: {{ childdata.<#= prop2.Name #> }}</a>
+						<a href="#/<#= prop.Name #>/{{ childdata.<#= childProperty.Name #> }}"><#= childProperty.Name #>: {{ childdata.<#= childProperty.Name #> }}</a>
 						<#+
 						}
 						else 
 						{
 						#>
-						<#= prop2.Name #>: {{ childdata.<#= prop2.Name #> }} <#+
+						<#= childProperty.Name #>: {{ childdata.<#= childProperty.Name #> }} <#+
 						}
 				 } 
 			  } #>
 			   
 				</p>
-            </li>
-        </ul>
+			</li>
+		</ul>
 <#+   } else { #>
 	<p><#= prop.Name #>: {{ <#= _type.Name.ToLower() #>.<#= prop.Name #> }} </p>
 <#+   }	// end if #>
@@ -60,7 +60,7 @@ public class PartialsTemplate : CSharpTemplate
 </div>
 
 <#+
-        return this.GenerationEnvironment.ToString();
+		return this.GenerationEnvironment.ToString();
 	}
 }
 #>

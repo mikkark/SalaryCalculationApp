@@ -1,4 +1,4 @@
-﻿<div ng-controller="employerController">
+﻿<div ng-class="{ employer != undefined ? active : nonactive }">
 
     <p>EmployerId: {{ employer.EmployerId }} </p>
     <p>Name: {{ employer.Name }} </p>
@@ -7,7 +7,7 @@
         <li ng-repeat="childdata in employer.Employees">
             <p>
 
-                <a href="#/Employees/{{ childdata.EmployeeId }}">EmployeeId: {{ childdata.EmployeeId }}</a>
+                <a href ng-click="getEmployee( childdata.EmployeeId )">EmployeeId: {{ childdata.EmployeeId }}</a>
                 Name: {{ childdata.Name }} 						Phone: {{ childdata.Phone }} 						Email: {{ childdata.Email }} 						EmployerId: {{ childdata.EmployerId }} 						Employer: {{ childdata.Employer }}
             </p>
         </li>
