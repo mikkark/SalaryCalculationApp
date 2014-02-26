@@ -18,7 +18,6 @@ crudControllers.controller('fullViewController', ['$scope', '$http',
         $scope.getEmployee = function (id) {
             $http.get('../api/Employee/' + id).success(function (data) {
                 $scope.employee = data;
-                $scope.isactive = false;
                 $scope.taxcard = undefined;
             });
         };
@@ -26,7 +25,6 @@ crudControllers.controller('fullViewController', ['$scope', '$http',
         $scope.getTaxcard = function (id) {
             $http.get('../api/Taxcard/' + id).success(function (data) {
                 $scope.taxcard = data;
-                $scope.isactive = true;
             });
         };
     }]);
