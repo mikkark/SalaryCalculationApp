@@ -46,6 +46,12 @@
     <Compile Include="Calculation\SalaryCalculator.cs" />
     <Compile Include="Events\SalaryCalculationDoneEvent.cs" />
     <Compile Include="Events\SalaryCalculationFailedEvent.cs" />
+    <Compile Include="Model\CalculationRow.cs">
+      <DependentUpon>DemoSolutionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CalculationRowType.cs">
+      <DependentUpon>DemoSolutionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DemoSolutionModel1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

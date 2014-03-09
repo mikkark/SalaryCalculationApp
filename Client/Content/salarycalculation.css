@@ -1,0 +1,75 @@
+#addCalculationRowSection {
+  border-bottom: solid 2px black;
+  margin-bottom: 1em;
+}
+#calculationSubmitBtn {
+  margin-top: 1em;
+}
+#calculationProcessing > div {
+  margin-bottom: 1em;
+  border-radius: 3px;
+}
+#calculationProcessing > .GeneratingReports {
+  background-color: #85b571;
+}
+#calculationProcessing > .AwaitingApproval {
+  background-color: #cedfed;
+}
+#notificationSection {
+  background-color: #cedfed;
+  line-height: 1.0;
+}
+#notificationSection > p.info {
+  color: #f0f8ff;
+}
+#notificationSection > p.error {
+  color: #ff0000;
+}
+#notificationSection > p.warning {
+  color: #ff6a00;
+}
+.salaryCalculationApp {
+  margin-top: 2em;
+}
+#calculationSubmitBtn {
+  vertical-align: bottom;
+}
+#employeesAndEmployeeGroups {
+  min-height: 500px;
+  border-left: solid 2px black;
+}
+#employeesAndEmployeeGroups > div {
+  margin-bottom: 1em;
+  text-align: left;
+}
+#employeesAndEmployeeGroups p {
+  border-radius: 3px;
+}
+#employeesAndEmployeeGroups .employee {
+  background-color: #cedfed;
+}
+#employeesAndEmployeeGroups .selected {
+  border: 1px solid black;
+}
+#employeesAndEmployeeGroups .employeeGroup {
+  background-color: #cedfed;
+}
+#salaryCalculation {
+  border-left: solid 2px black;
+  min-height: 500px;
+}
+#calculationProcessing {
+  border-left: solid 2px black;
+  min-height: 500px;
+}
+#calculationProcessing > .cancelled {
+  background-color: #ff0000;
+}
+#salaryCalculation > div.plus {
+  background-color: lightgreen;
+  opacity: 0.7;
+}
+#salaryCalculation > div.minus {
+  background-color: lightblue;
+  opacity: 0.7;
+}

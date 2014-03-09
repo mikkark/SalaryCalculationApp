@@ -55,12 +55,12 @@ namespace mikkark.SCA.Persistence.Commands
             //Saving the new calculation is not BL, that's why it is here.
             var salaryCalc = new SalaryCalculation
             {
-                EmployeeId = _employeeId,
-                GrossAmount = _grossSalary,
-                NetAmount = res.NetSalary,
-                PeriodStartDate = _periodStartDate,
-                PeriodEndDate = _periodEndDate,
-                Tax = res.Tax,
+                //EmployeeId = _employeeId,
+                //GrossAmount = _grossSalary,
+                //NetAmount = res.NetSalary,
+                //PeriodStartDate = _periodStartDate,
+                //PeriodEndDate = _periodEndDate,
+                //Tax = res.Tax,
                 SalaryCalculationId = Guid.NewGuid().ToString()
             };
             db.SalaryCalculations.Add(salaryCalc);

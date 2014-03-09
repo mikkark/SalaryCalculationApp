@@ -8,10 +8,12 @@
         <EntityTypeShape EntityType="BlogdemoSQLModel.Employee" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BlogdemoSQLModel.Employer" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="BlogdemoSQLModel.FK_Employee_ToEmployer" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BlogdemoSQLModel.SalaryCalculation" Width="1.5" PointX="5.25" PointY="7.25" />
+        <EntityTypeShape EntityType="BlogdemoSQLModel.SalaryCalculation" Width="2.25" PointX="4.75" PointY="7.25" />
         <EntityTypeShape EntityType="BlogdemoSQLModel.Taxcard" Width="1.5" PointX="5.25" PointY="4.75" />
-        <AssociationConnector Association="BlogdemoSQLModel.FK_SalaryCalculation_ToEmployee" />
         <AssociationConnector Association="BlogdemoSQLModel.FK_TaxcardToEmployee" />
+        <EntityTypeShape EntityType="BlogdemoSQLModel.CalculationRow" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="BlogdemoSQLModel.CalculationRowType" Width="1.5" PointX="7.875" PointY="2.625" />
+        <AssociationConnector Association="BlogdemoSQLModel.CalculationRowCalculationRowType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-var crudControllers = angular.module('crudControllers', []);
+var basicdataControllers = angular.module('basicdataControllers', []);
 
-crudControllers.controller('fullViewController', ['$scope', '$http',
+basicdataControllers.controller('fullViewController', ['$scope', '$http',
     function ($scope, $http) {
         var getEmployer = function () {
             $http.get('../api/Employer').success(function (data) {

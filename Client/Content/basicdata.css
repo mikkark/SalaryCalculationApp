@@ -1,0 +1,28 @@
+div.active {
+  background-color: #e7c9d3;
+}
+div[ng-app] div.nonactive {
+  display: none;
+}
+@media (min-width: 600px) {
+  .returnLink {
+    display: none;
+  }
+}
+@media (max-width: 599px) {
+  div[ng-app] div.active:not(.lastActive) {
+    display: none;
+  }
+}
+/* -----------------*/
+/* CSS Transitions */
+/* -----------------*/
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-12 {
+  -moz-transition: width 1s;
+  -o-transition: width 1s;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+}

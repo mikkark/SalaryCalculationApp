@@ -118,17 +118,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\basicdata.css">
+      <DependentUpon>basicdata.less</DependentUpon>
+    </Content>
+    <Content Include="Content\basicdata.min.css">
+      <DependentUpon>basicdata.css</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.js" />
+    <Content Include="Content\salarycalculation.css">
+      <DependentUpon>salarycalculation.less</DependentUpon>
+    </Content>
+    <Content Include="Content\salarycalculation.min.css">
+      <DependentUpon>salarycalculation.css</DependentUpon>
+    </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Controllers\salaryCalculationControllers.js" />
+    <Content Include="Scripts\salaryCalculationApp.js" />
+    <Content Include="Scripts\salaryCalculationUi.js" />
+    <Content Include="Scripts\Services\uiHelper.js" />
+    <Content Include="Scripts\Services\eventbroadcaster.js" />
     <Content Include="Scripts\ui.js" />
-    <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\Controllers\crudControllers.js" />
+    <Content Include="Scripts\basicdataApp.js" />
+    <Content Include="Scripts\Controllers\basicdataControllers.js" />
+    <Content Include="Scripts\Vendor\angular-local-storage.min.js" />
     <Content Include="Scripts\Vendor\angular-route.min.js" />
-    <Content Include="Scripts\Vendor\angular-ui-router.min.js" />
     <Content Include="Scripts\Vendor\jquery-1.10.2.min.map" />
     <Content Include="Scripts\Vendor\angular-route.min.js.map" />
+    <Content Include="Content\basicdata.less" />
+    <Content Include="Content\salarycalculation.less" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\Vendor\angular.min.js" />
     <None Include="Scripts\Vendor\jquery-1.10.2.intellisense.js" />
@@ -147,6 +166,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BasicDataController.cs" />
+    <Compile Include="Controllers\CalculationRowTypeController.cs" />
+    <Compile Include="Controllers\CalculationController.cs" />
+    <Compile Include="Controllers\SalaryCalculationController.cs" />
     <Compile Include="Controllers\TaxcardController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployerController.cs" />
@@ -154,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SalaryCalculationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +187,7 @@
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\SalaryCalculation\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -173,8 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SalarycalculationCore\mikkark.SCA.Core.csproj">

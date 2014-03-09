@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Http;
 using mikkark.SCA.Core.Model;
 
 namespace mikkark.SCA.Client.Controllers
@@ -18,6 +20,35 @@ namespace mikkark.SCA.Client.Controllers
 
             //GetEmployerQuery query = new GetEmployerQuery("foo");
             //return query.Execute();
+        }
+
+        public List<Employee> Get()
+        {
+            var employees = new List<Employee>();
+
+            employees.Add(new Employee
+            {
+                EmployeeId = Guid.NewGuid().ToString(),
+                Email = "kalle@kalle.com",
+                Name = "Kalle",
+                Phone = "1234567"
+            });
+            employees.Add(new Employee
+            {
+                EmployeeId = Guid.NewGuid().ToString(),
+                Email = "saana@saana.com",
+                Name = "Saana",
+                Phone = "55422342"
+            });
+            employees.Add(new Employee
+            {
+                EmployeeId = Guid.NewGuid().ToString(),
+                Email = "ville@ville.com",
+                Name = "Ville",
+                Phone = "21414124"
+            });
+
+            return employees;
         }
 
         // POST api/<controller>

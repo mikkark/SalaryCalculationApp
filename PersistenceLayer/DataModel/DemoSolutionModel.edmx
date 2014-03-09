@@ -118,8 +118,6 @@
           <Property Name="EmployerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Employer" Relationship="Self.FK_Employee_ToEmployer" FromRole="Employee"
                               ToRole="Employer" />
-          <NavigationProperty Name="SalaryCalculations" Relationship="BlogdemoSQLModel.FK_SalaryCalculation_ToEmployee"
-                              FromRole="Employee" ToRole="SalaryCalculation" />
           <NavigationProperty Name="Taxcards" Relationship="BlogdemoSQLModel.FK_TaxcardToEmployee" FromRole="Employee"
                               ToRole="Taxcard" />
         </EntityType>
@@ -154,14 +152,15 @@
           </AssociationSet>
           <EntitySet Name="SalaryCalculations" EntityType="BlogdemoSQLModel.SalaryCalculation" />
           <EntitySet Name="Taxcards" EntityType="BlogdemoSQLModel.Taxcard" />
-          <AssociationSet Name="FK_SalaryCalculation_ToEmployee"
-                          Association="BlogdemoSQLModel.FK_SalaryCalculation_ToEmployee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="SalaryCalculation" EntitySet="SalaryCalculations" />
-          </AssociationSet>
           <AssociationSet Name="FK_TaxcardToEmployee" Association="BlogdemoSQLModel.FK_TaxcardToEmployee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Taxcard" EntitySet="Taxcards" />
+          </AssociationSet>
+          <EntitySet Name="CalculationRows" EntityType="BlogdemoSQLModel.CalculationRow" />
+          <EntitySet Name="CalculationRowTypes" EntityType="BlogdemoSQLModel.CalculationRowType" />
+          <AssociationSet Name="CalculationRowCalculationRowType" Association="BlogdemoSQLModel.CalculationRowCalculationRowType">
+            <End Role="CalculationRow" EntitySet="CalculationRows" />
+            <End Role="CalculationRowType" EntitySet="CalculationRowTypes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="SalaryCalculation">
@@ -172,12 +171,7 @@
                     Unicode="false" />
           <Property Name="PeriodStartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PeriodEndDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="GrossAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="NetAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Tax" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee" Relationship="BlogdemoSQLModel.FK_SalaryCalculation_ToEmployee"
-                              FromRole="SalaryCalculation" ToRole="Employee" />
+          <Property Name="Status" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Taxcard">
           <Key>
@@ -189,18 +183,6 @@
           <NavigationProperty Name="Employee" Relationship="BlogdemoSQLModel.FK_TaxcardToEmployee" FromRole="Taxcard"
                               ToRole="Employee" />
         </EntityType>
-        <Association Name="FK_SalaryCalculation_ToEmployee">
-          <End Type="BlogdemoSQLModel.Employee" Role="Employee" Multiplicity="1" />
-          <End Type="BlogdemoSQLModel.SalaryCalculation" Role="SalaryCalculation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeId" />
-            </Principal>
-            <Dependent Role="SalaryCalculation">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TaxcardToEmployee">
           <End Type="BlogdemoSQLModel.Employee" Role="Employee" Multiplicity="1" />
           <End Type="BlogdemoSQLModel.Taxcard" Role="Taxcard" Multiplicity="*" />
@@ -212,6 +194,27 @@
               <PropertyRef Name="EmployeeId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CalculationRow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <NavigationProperty Name="CalculationRowType" Relationship="BlogdemoSQLModel.CalculationRowCalculationRowType" FromRole="CalculationRow" ToRole="CalculationRowType" />
+          <Property Name="TypeId" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CalculationRowType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="RowType" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="CalculationRowCalculationRowType">
+          <End Type="BlogdemoSQLModel.CalculationRow" Role="CalculationRow" Multiplicity="*" />
+          <End Type="BlogdemoSQLModel.CalculationRowType" Role="CalculationRowType" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -243,10 +246,6 @@
           <EntitySetMapping Name="SalaryCalculations">
             <EntityTypeMapping TypeName="BlogdemoSQLModel.SalaryCalculation">
               <MappingFragment StoreEntitySet="SalaryCalculation">
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
-                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
                 <ScalarProperty Name="PeriodEndDate" ColumnName="PeriodEndDate" />
                 <ScalarProperty Name="PeriodStartDate" ColumnName="PeriodStartDate" />
                 <ScalarProperty Name="SalaryCalculationId" ColumnName="SalaryCalculationId" />

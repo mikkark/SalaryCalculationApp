@@ -1,0 +1,109 @@
+﻿@minimumHeightForTesting: 500px;
+@canceledColor: red;
+@employeeColor: #cedfed;
+@infoNotificationColor: red;
+@infoFontcolor: aliceblue;
+@errorFontColor: red;
+@warningFontColor: #ff6a00;
+
+#addCalculationRowSection {
+    border-bottom: solid 2px black;
+    margin-bottom: 1em;
+}
+
+#calculationSubmitBtn {
+    margin-top: 1em;
+}
+
+#calculationProcessing > div {
+    margin-bottom: 1em;
+    border-radius: 3px;
+}
+
+#calculationProcessing > .GeneratingReports {
+    background-color: #85b571;
+}
+
+#calculationProcessing > .AwaitingApproval {
+    background-color: #cedfed;
+}
+
+
+#notificationSection {
+    background-color: @employeeColor;
+    line-height: 1.0;
+}
+
+    #notificationSection > p.info {
+        color: @infoFontcolor;
+    }
+
+    #notificationSection > p.error {
+        color: @errorFontColor;
+    }
+
+    #notificationSection > p.warning {
+        color: @warningFontColor;
+    }
+
+.salaryCalculationApp {
+    margin-top: 2em;
+}
+
+#calculationSubmitBtn {
+    vertical-align: bottom;
+}
+
+#employeesAndEmployeeGroups {
+    min-height: @minimumHeightForTesting;
+    border-left: solid 2px black;
+    //border: 1px solid black;
+    //    background-color: @infoFontcolor;
+}
+
+    #employeesAndEmployeeGroups > div {
+        margin-bottom: 1em;
+        text-align: left;
+    }
+
+    #employeesAndEmployeeGroups p {
+        border-radius: 3px;
+    }
+
+    #employeesAndEmployeeGroups .employee {
+        background-color: @employeeColor;
+    }
+
+    #employeesAndEmployeeGroups .selected {
+        border: 1px solid black;
+    }
+
+    #employeesAndEmployeeGroups .employeeGroup {
+        background-color: @employeeColor;
+    }
+
+#salaryCalculation {
+    border-left: solid 2px black;
+    min-height: @minimumHeightForTesting;
+    //  background-color: #85b571;
+}
+
+#calculationProcessing {
+    border-left: solid 2px black;
+    min-height: @minimumHeightForTesting;
+    //background-color: #9da6d4;
+}
+
+    #calculationProcessing > .cancelled {
+        background-color: @canceledColor;
+    }
+
+#salaryCalculation > div.plus {
+    background-color: lightgreen;
+    opacity: 0.7;
+}
+
+#salaryCalculation > div.minus {
+    background-color: lightblue;
+    opacity: 0.7;
+}

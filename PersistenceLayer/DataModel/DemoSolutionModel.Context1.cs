@@ -31,5 +31,7 @@ namespace mikkark.SCA.Persistence.DataModel
         public virtual DbSet<Employer> Employers { get; set; }
         public virtual DbSet<SalaryCalculation> SalaryCalculations { get; set; }
         public virtual DbSet<Taxcard> Taxcards { get; set; }
+        public virtual DbSet<CalculationRow> CalculationRows { get; set; }
+        public virtual DbSet<CalculationRowType> CalculationRowTypes { get; set; }
     }
 }

@@ -12,20 +12,12 @@ namespace mikkark.SCA.Core.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class CalculationRow
     {
-        public Employee()
-        {
-            this.Taxcards = new HashSet<Taxcard>();
-        }
+        public string Id { get; set; }
+        public string Value { get; set; }
+        public string TypeId { get; set; }
     
-        public string EmployeeId { get; set; }
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string EmployerId { get; set; }
-    
-        public virtual Employer Employer { get; set; }
-        public virtual ICollection<Taxcard> Taxcards { get; set; }
+        public virtual CalculationRowType CalculationRowType { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using mikkark.SCA.Core.Model;
 using mikkark.SCA.Infra.DomainBaseClasses;
 using mikkark.SCA.Persistence.DataModel;
@@ -18,7 +19,8 @@ namespace mikkark.SCA.Persistence.Queries
 
         public override IQueryable<SalaryCalculation> Execute()
         {
-            return _entities.SalaryCalculations.Where(calc => calc.EmployeeId == _employeeId);
+            throw new NotImplementedException();
+            //return _entities.SalaryCalculations.Where(calc => calc.EmployeeId == _employeeId);
         }
     }
 }
