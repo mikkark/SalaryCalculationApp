@@ -1,4 +1,7 @@
-﻿salaryCalculationApp.factory('eventBroadcast', function ($rootScope) {
+﻿/* 
+    Eventbroadcast service. By Eric Terpstra, see http://ericterpstra.com/2012/09/angular-cats-part-3-communicating-with-broadcast/
+*/
+salaryCalculationApp.factory('eventBroadcast', function ($rootScope) {
     // eventBroadcaster is the object created by the factory method.
     var eventBroadcaster = {};
 
