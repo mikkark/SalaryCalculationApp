@@ -66,10 +66,11 @@
   background-color: #ff0000;
 }
 #salaryCalculation > div.plus {
-  background-color: lightgreen;
-  opacity: 0.7;
+  background-color: rgba(144, 238, 144, 0.3);
 }
 #salaryCalculation > div.minus {
-  background-color: lightblue;
-  opacity: 0.7;
+  background-color: rgba(173, 216, 230, 0.3);
+}
+#salaryCalculation div.calculationRow {
+  margin-bottom: 0.5em;
 }

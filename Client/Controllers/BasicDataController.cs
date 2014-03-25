@@ -7,7 +7,7 @@ namespace mikkark.SCA.Client.Controllers
         //
         // GET: /BasicData/
         [Authorize]
-        public ActionResult BasicData()
+        public ActionResult Index()
         {
             return View();
         }

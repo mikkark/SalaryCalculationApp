@@ -57,8 +57,6 @@
 #employeesAndEmployeeGroups {
     min-height: @minimumHeightForTesting;
     border-left: solid 2px black;
-    //border: 1px solid black;
-    //    background-color: @infoFontcolor;
 }
 
     #employeesAndEmployeeGroups > div {
@@ -85,13 +83,11 @@
 #salaryCalculation {
     border-left: solid 2px black;
     min-height: @minimumHeightForTesting;
-    //  background-color: #85b571;
 }
 
 #calculationProcessing {
     border-left: solid 2px black;
     min-height: @minimumHeightForTesting;
-    //background-color: #9da6d4;
 }
 
     #calculationProcessing > .cancelled {
@@ -99,11 +95,13 @@
     }
 
 #salaryCalculation > div.plus {
-    background-color: lightgreen;
-    opacity: 0.7;
+    background-color: rgba(144, 238, 144, 0.30);
 }
 
 #salaryCalculation > div.minus {
-    background-color: lightblue;
-    opacity: 0.7;
+    background-color: rgba(173, 216, 230, 0.30);
+}
+
+#salaryCalculation div.calculationRow {
+    margin-bottom: 0.5em;
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Web.Http;
 using mikkark.SCA.Core.Model;
 
@@ -31,21 +32,27 @@ namespace mikkark.SCA.Client.Controllers
                 EmployeeId = Guid.NewGuid().ToString(),
                 Email = "kalle@kalle.com",
                 Name = "Kalle",
-                Phone = "1234567"
+                Phone = "1234567",
+                Taxcards =
+                    new Collection<Taxcard> {new Taxcard {TaxcardId = Guid.NewGuid().ToString(), TaxPercentage = 25.0M}}
             });
             employees.Add(new Employee
             {
                 EmployeeId = Guid.NewGuid().ToString(),
                 Email = "saana@saana.com",
                 Name = "Saana",
-                Phone = "55422342"
+                Phone = "55422342",
+                Taxcards =
+                    new Collection<Taxcard> {new Taxcard {TaxcardId = Guid.NewGuid().ToString(), TaxPercentage = 20.0M}}
             });
             employees.Add(new Employee
             {
                 EmployeeId = Guid.NewGuid().ToString(),
                 Email = "ville@ville.com",
                 Name = "Ville",
-                Phone = "21414124"
+                Phone = "21414124",
+                Taxcards =
+                    new Collection<Taxcard> {new Taxcard {TaxcardId = Guid.NewGuid().ToString(), TaxPercentage = 18.5M}}
             });
 
             return employees;

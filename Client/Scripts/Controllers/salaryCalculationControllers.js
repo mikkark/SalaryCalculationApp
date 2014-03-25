@@ -35,12 +35,19 @@ salaryCalculationControllers.controller('appController', ['$scope', '$http', 'lo
 
     }]);
 
-salaryCalculationControllers.controller('employeeAndEmployeeGroupController', ['$scope', '$http', 'eventBroadcast',
-    function ($scope, $http, eventBroadcast) {
+salaryCalculationControllers.controller('employeeAndEmployeeGroupController', ['$scope', '$http', 'eventBroadcast', 'employeeService',
+    function ($scope, $http, eventBroadcast, employeeService) {
 
         $http.get('../api/Employee/').success(function (data) {
             $scope.employees = data;
         });
+
+        //This was an attempt to get the employees from a service. I will keep this here for later reference. 
+        //This was also my first proper look into promise objects.
+        //
+        //employeeService.async().then(function () {
+        //    $scope.employees = employeeService.data();
+        //});
 
         $scope.selectEmployee = function (employee) {
             if (employee.selected === true) {
@@ -48,6 +55,8 @@ salaryCalculationControllers.controller('employeeAndEmployeeGroupController', ['
             } else {
                 employee.selected = true;
             }
+
+            eventBroadcast.broadcast('employeeSelectionChanged', employee);
         };
 
         // When 'submit' is broadcast, give the selected employees/groups.
@@ -95,8 +104,8 @@ salaryCalculationControllers.controller('notificationsController', ['$scope', 'e
         });
     }]);
 
-salaryCalculationControllers.controller('salaryCalculationController', ['$scope', '$http', 'eventBroadcast', 'uiHelper',
-    function ($scope, $http, eventBroadcast, uiHelper) {
+salaryCalculationControllers.controller('salaryCalculationController', ['$scope', '$http', 'eventBroadcast', 'uiHelper', 'employeeService',
+    function ($scope, $http, eventBroadcast, uiHelper, employeeService) {
 
         $scope.initialize = function () {
             $scope.calculationRows = new Array();
@@ -106,6 +115,18 @@ salaryCalculationControllers.controller('salaryCalculationController', ['$scope'
                 $scope.possibleCalculationRowTypes = data;
                 $scope.selectedRowType = '';
             });
+
+            $scope.calculationBasicdata = {};
+
+            var currDate = new Date();
+            var periodStartDate = new Date(currDate.getFullYear(), currDate.getMonth(), 1);
+            var periodEndDate = new Date(new Date(new Date(periodStartDate).setMonth(periodStartDate.getMonth() + 1)) - 1);
+
+            //Set some defaults.
+            $scope.calculationBasicdata.PeriodStartDate = periodStartDate.getDate() + '.' + (periodStartDate.getMonth() + 1) + '.' + periodStartDate.getFullYear();
+            $scope.calculationBasicdata.PeriodEndDate = periodEndDate.getDate() + '.' + (periodEndDate.getMonth() + 1) + '.' + periodEndDate.getFullYear();
+
+            $scope.calculationTotals = [];
         };
 
         $scope.initialize();
@@ -120,8 +141,41 @@ salaryCalculationControllers.controller('salaryCalculationController', ['$scope'
             $scope.selectedRowType = ''; //Clear this bound field to empty the dropdown again.
         };
 
+        $scope.total = function () {
+            var totalNumber = 0;
+            for (var i = 0; i < $scope.calculationRows.length; i++) {
+                var value = $scope.calculationRows[i].Value;
+                totalNumber = totalNumber + ($scope.calculationRows[i].RowType === 'plus' ? value : value * -1);
+            }
+
+            return totalNumber;
+        };
+
+        $scope.totalTax = function (taxPercentage) {
+            var total = $scope.total();
+
+            return (taxPercentage / 100) * total;
+        };
+
         $scope.$on('submitCalculation', function () {
             eventBroadcast.message.calculationRows = $scope.calculationRows;
+        });
+
+        $scope.$on('employeeSelectionChanged', function () {
+            var employee = eventBroadcast.message;
+
+            if (employee.selected) {
+                $scope.calculationTotals[$scope.calculationTotals.length] = {
+                    employeeName: employee.Name,
+                    taxPercentage: employee.Taxcards[0].TaxPercentage
+                };
+            } else {
+                angular.forEach($scope.calculationTotals, function (obj, index) {
+                    if (obj.employeeName === employee.Name) {
+                        $scope.calculationTotals.splice(index, 1);
+                    }
+                });
+            }
         });
 
         $scope.$on('clearAll', function () {

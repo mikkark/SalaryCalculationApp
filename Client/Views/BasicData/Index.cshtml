@@ -4,7 +4,7 @@
 
 <h2>Here you can modify your own data as employer as well as the basic data related to your employees</h2>
 
-<div ng-app="salarycalculationApp" ng-controller="fullViewController">
+<div ng-app="basicdataApp" ng-controller="fullViewController">
 
     <div class="col-md-11 active" ng-include="'../Views/Partials/employer.html'"></div>
     <div class="col-md-1" ng-class="employee != undefined ? 'active' : 'nonactive'" ng-include="'../Views/Partials/employee.html'"></div>
@@ -14,10 +14,11 @@
 
 @section ScriptToRunAtTheEnd
 {
+    <link href="~/Content/basicdata.min.css" rel="stylesheet" type="text/css" />
     <script src=@Url.Content("~/Scripts/Vendor/angular.min.js")> </script>
-    <script src=@Url.Content("~/Scripts/basicdataApp.js")> </script>
-    <script src=@Url.Content("~/Scripts/Controllers/basicdataControllers.js")> </script>
-    <script src=@Url.Content("~/Scripts/Vendor/jquery.livequery.min.js")> </script>
     <script src=@Url.Content("~/Scripts/Vendor/angular-route.min.js")> </script>
+    <script src=@Url.Content("~/Scripts/Controllers/basicdataControllers.js")> </script>
+    <script src=@Url.Content("~/Scripts/basicdataApp.js")> </script>
+    <script src=@Url.Content("~/Scripts/Vendor/jquery.livequery.min.js")> </script>
     <script src=@Url.Content("~/Scripts/ui.js")> </script>
 }

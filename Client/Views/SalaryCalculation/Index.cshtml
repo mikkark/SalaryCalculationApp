@@ -3,6 +3,7 @@
 }
 
 <div ng-app="salaryCalculationApp" ng-controller="appController" class="salaryCalculationApp col-md-12">
+
     <div id="employeesAndEmployeeGroups" class="col-md-3 text-center" ng-controller="employeeAndEmployeeGroupController">
         from here you will select the employees or the employer group to calculate salaries for
         <label>Choose individual employees...</label>
@@ -14,32 +15,51 @@
         </div>
 
         @*<label>...or choose a group</label>
-        <div id="employeeGroups">
-            <p class="employeeGroup">Ones with permanent contract</p>
-            <p class="employeeGroup">Paid by the hour</p>
-            <p class="employeeGroup">Irregular work</p>
-        </div>*@
+            <div id="employeeGroups">
+                <p class="employeeGroup">Ones with permanent contract</p>
+                <p class="employeeGroup">Paid by the hour</p>
+                <p class="employeeGroup">Irregular work</p>
+            </div>*@
     </div>
+
     <div id="salaryCalculation" class="col-md-6" ng-controller="salaryCalculationController">
+        <div id="calculationBasicData" class="col-md-12">
+            <div class="col-md-4">
+                <label>Calculation period</label>
+            </div>
+            <div class="col-md-3 col-md-push-1">
+                <input class="col-md-12" type="text" ng-model="calculationBasicdata.PeriodStartDate" />
+            </div>
+            <div class="col-md-3 col-md-push-1">
+                <input class="col-md-12" type="text" ng-model="calculationBasicdata.PeriodEndDate" />
+            </div>
+        </div>
         <div id="addCalculationRowSection" class="col-md-12">
             <label class="col-md-5">Add calculation row:</label>
             <select class="col-md-4 col-md-push-3" ng-model="selectedRowType" ng-options="type.Id as type.Name for type in possibleCalculationRowTypes" id="addCalculationRow" ng-change="addCalculationRow()"></select>
         </div>
-        <div class="col-md-12" ng-class="calculationRow.RowType" ng-repeat="calculationRow in calculationRows | orderBy:'RowType':true">
-            <div id="label" class="col-md-6">
+        <div class="col-md-12 calculationRow" ng-class="calculationRow.RowType" ng-repeat="calculationRow in calculationRows | orderBy:'RowType':true">
+            <div class="col-md-6">
                 <label>{{ calculationRow.Name }}</label>
             </div>
-            <div id="value" class="col-md-4 col-md-push-2">
+            <div class="col-md-4 col-md-push-2">
                 <input type="number" ng-model="calculationRow.Value" />
             </div>
         </div>
+        <div class="col-md-12" id="calculationTotals" ng-repeat="calculationTotal in calculationTotals">
+            <label class="col-md-12">Employee {{ calculationTotal.employeeName }}, tax percentage {{ calculationTotal.taxPercentage }}</label>
+            <p class="col-md-12 col-md-push-6">total taxable {{ total() }}</p>
+            <p class="col-md-12 col-md-push-6" ng-bind="totalTax(calculationTotal.taxPercentage)">this will get replaced?</p>
+            <p class="col-md-12 col-md-push-6">total payable {{ total() - totalTax(calculationTotal.taxPercentage) }}</p>
+        </div>
         <input ng-hide="calculationRows.length === 0" type="button" id="calculationSubmitBtn" class="col-md-4 col-md-push-8" value="Submit calculation" ng-click="submitCalculation()" />
     </div>
+
     <div id="calculationProcessing" class="col-md-3" ng-controller="processController">
         here you will see the processing of salary calculations
         <div ng-class="calculation.Status" ng-repeat="calculation in calculationsBeingProcessed">
-            <label class="timePeriod">From {{ calculation.PeriodStartDate }} to {{ calculation.PeriodEndDate }}</label>
-            <label class="status">{{ getFriendlyName(calculation.Status, 'status') }}</label>
+            <label>From {{ calculation.PeriodStartDate }} to {{ calculation.PeriodEndDate }}</label>
+            <label>{{ getFriendlyName(calculation.Status, 'status') }}</label>
         </div>
     </div>
     <div id="notificationSection" class="col-md-12" ng-controller="notificationsController">
@@ -58,6 +78,7 @@
     <script src=@Url.Content("~/Scripts/Services/eventbroadcaster.js")> </script>
     <script src=@Url.Content("~/Scripts/Services/uiHelper.js")> </script>
     <script src=@Url.Content("~/Scripts/Vendor/angular-local-storage.min.js")> </script>
+    <script src=@Url.Content("~/Scripts/Services/employeeService.js")> </script>
     <script src=@Url.Content("~/Scripts/Controllers/salaryCalculationControllers.js")> </script>
     <script src=@Url.Content("~/Scripts/salaryCalculationUi.js")> </script>
 }

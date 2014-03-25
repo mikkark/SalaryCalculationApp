@@ -137,6 +137,7 @@
     <Content Include="Scripts\Controllers\salaryCalculationControllers.js" />
     <Content Include="Scripts\salaryCalculationApp.js" />
     <Content Include="Scripts\salaryCalculationUi.js" />
+    <Content Include="Scripts\Services\employeeService.js" />
     <Content Include="Scripts\Services\uiHelper.js" />
     <Content Include="Scripts\Services\eventbroadcaster.js" />
     <Content Include="Scripts\ui.js" />
@@ -183,7 +184,7 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Account\Error.cshtml" />
-    <Content Include="Views\BasicData\BasicData.cshtml" />
+    <Content Include="Views\BasicData\Index.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
